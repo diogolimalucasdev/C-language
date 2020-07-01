@@ -1,0 +1,23 @@
+# PRograma-basico-em-C
+#include <stdio.h>
+
+int main()
+{
+    float temp[] = { 
+        27.25, 27.50, 28.00, 28.25, 28.50, 28,75, 29.00, 29.25,
+        29.50,29.75, 30.00
+    };
+    
+    int i;
+    float acumulador = 0;
+    
+    for(i= 0; i<12; i++) {
+        acumulador+=temp[i];//aqui eu indico para o programa prara ele grava
+        //em acumulador cada valor de i
+        printf("temp %i = %f\n", i, temp[i]);
+        
+        printf("SOMA = %f\n", acumulador); //representa o valor do i
+        //a cada vez em que se passa pelo lop
+       
+    }
+    
