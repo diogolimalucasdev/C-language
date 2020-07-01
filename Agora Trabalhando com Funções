@@ -1,0 +1,22 @@
+#include <stdio.h>
+/* EU POSSO FAZER DESSE JEITO A BAIXO
+void media (float n1 , float n2){
+  float media = (n1+n2)/2;
+  printf("media %f", media); 
+*/
+
+// OU desse jeito
+
+float media (float n1, float n2){ //pq eu troquei o void pelo float pois agora o programa ira me devolver esse valor fora da função, entao eu ja tenho que determinar o tipo daquele return
+    float media = (n1 +n2);
+    return media;
+}
+
+int main()
+{
+   float m1 = media (5.0, 9.0);//posso usar quantas vezes eu quiser
+    //esse é o bom pois eu posso usar a função para montar e ainda organizar tudo
+    printf("media1 %f", m1);
+    
+    return 0;
+}
