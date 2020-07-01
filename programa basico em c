@@ -1,5 +1,4 @@
-# PRograma-basico-em-C
-Usando switch case
+
 int main()
 {
     printf("decida o que o avião ira realizar\n");
