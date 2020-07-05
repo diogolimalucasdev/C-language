@@ -1,0 +1,23 @@
+#include <16F628A.h>
+#fuses XT, NOMCLR, NOWDT//xt(pois usei cristais), nomclr(pous nao usei o master clear)
+#use delay(clock=4mhz) //devemos utilizar o mesmo valor de clock tanto aqui na programção tanto no proteus
+ int8 segmentos[] = {
+   0b00111111, 0b00000110, 0b01011011, 0b01001111,
+   0b01100110, 0b01101101, 0b01111100, 0b00000111,
+   0b01111111, 0b01100111
+};//FIZ ISSO PARA QUE NAO FIQUE GIGANTE O CODIGO, E COM ISSO EU POSSO ACESSAR CADA BIT COMO UM INDICE O QUE FACILITA E MUITO
+
+
+void main(){
+  // OUTPUT_B(0B000000001); //PRIMEIRO EU COLOCO O (0B) PARA DETERMINA QUE É A PORTA B, DEPOIS COLOCO  8 BITS EM NIVEL LOGICO BAIXO (0)
+  INT numero= 0;
+  while(true){
+  output_b(segmentos [numero]);//primeiro eu determinei a porta de saida, depois o bits que esta a cima, e para variar de 0 a 9 eu usei os indices
+  numero ++;
+  if(numero > 9){
+  numero = 0;
+  }
+  delay_ms(1000);
+  
+  }
+  
