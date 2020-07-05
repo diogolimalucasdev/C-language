@@ -1,0 +1,19 @@
+#include <18F4550.h>
+#fuses HS, NOMCLR, NOWDT
+#use delay(clock=20MHz)
+
+#include <lcd.c>
+
+void main () {
+   
+   lcd_init();
+   
+   printf(LCD_PUTC, "Olá Mundo ");
+   delay_ms(100);
+   printf(LCD_PUTC,"\n Diogo");
+   delay_ms(100);
+   LCD_PUTC("\f");
+
+   
+   
+}
