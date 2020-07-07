@@ -1,0 +1,62 @@
+#include <18F4550.h>
+#fuses HS, NOWDT
+#use delay(clock=20MHz)
+ 
+ 
+#include <lcd.c>
+
+char teclado[4][3] = {
+   { '1', '2', '3' },
+   { '4', '5', '6' },
+   { '7', '8', '9' },
+   { '*', '0', '#' }
+};
+
+int8 linhas[] = { PIN_B0, PIN_B1, PIN_B2, PIN_B3 };
+int8 colunas[] = { PIN_B4, PIN_B5, PIN_B6 };
+
+char lerTeclado() {
+   char tecla = '-';
+   
+   for ( int8 i = 0; i <= 2; i++ ) {
+      output_bit( colunas[i], 0 );
+      
+      for (int8 j = 0; j <= 3; j++) {
+         if ( input(linhas[j]) == 0 ) {
+            tecla = teclado[j][i];
+         }
+      }
+      
+      output_bit( colunas[i], 1 );   
+   }
+   
+   return tecla;
+}
+  
+void main() {
+      
+   lcd_init(); 
+      
+   printf(LCD_PUTC, "\fTeclas\n" );
+   delay_ms(100);
+   
+   output_b(255);
+   
+   
+   while(true) {
+      
+      char leitura = lerTeclado();
+      
+      if (leitura != '-') {
+         printf(LCD_PUTC, "%c", leitura);
+         delay_ms(1000);
+      }
+      
+   }   
+}
+
+
+
+
+
+
