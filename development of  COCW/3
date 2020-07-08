@@ -1,0 +1,60 @@
+#include <16F877A.h>
+
+#include <KBD.C>
+#define LCD_DATA_PORT getenv("SFR:PORTB")//alterei a porta D para B
+#include <lcd.c>
+char ALARME;
+
+
+
+void main()
+{
+   
+   kbd_init();//acionando o teclado
+   lcd_init();//iniciando o lcd
+
+   printf(LCD_PUTC,"ESCOLHA UM ALARME \n DE 0 a 3");//AS ESCOLHAS DO USUARIO
+   delay_ms(100); //delay pra ficar mostrando um tempo na tela
+   printf(LCD_PUTC, "\f");
+   
+   printf(LCD_PUTC, " ALARME 1 \n 2 EM 2 HORAS");
+   delay_ms(100);
+   printf(LCD_PUTC, "\f");
+   
+   printf(LCD_PUTC, " ALARME 2 \n 1 EM 1 HORA");
+   delay_ms(100);
+   printf(LCD_PUTC, "\f");
+   
+   printf(LCD_PUTC, " ALARME 3 \n 10 EM 10 MINUTOS");
+   delay_ms(100);
+   printf(LCD_PUTC, "\f");
+   
+   Printf(LCD_PUTC,"ESCOLHA");
+   delay_ms(20);
+   
+   ALARME = kbd_getc();//ler o que foi digitado 
+   
+   switch(ALARME){
+      case 1: 
+         printf(LCD_PUTC,"voce escolheu o  alarme 1");
+         delay_ms(10);
+         printf(LCD_PUTC,"\f HORA DO ALARME");
+         break;
+      case 2:
+         printf(LCD_PUTC,"voce escolheu o  alarme 2");
+         delay_ms(10);
+         printf(LCD_PUTC,"\f HORA DO ALARME");
+         break;
+      case 3:
+         printf(LCD_PUTC,"voce escolheu o  alarme 3");
+         delay_ms(10);
+         printf(LCD_PUTC,"\f HORA DO ALARME");
+         break;
+      }
+   
+  }
+   
+ 
+   
+
+ 
