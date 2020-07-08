@@ -1,0 +1,36 @@
+#include <KBD.C>
+#define LCD_DATA_PORT getenv("SFR:PORTB")//Alterei a Porta D para A B
+#include <lcd.c>
+Char c;
+void main()
+{
+   kbd_init();
+
+   lcd_init();
+   printf(LCD_PUTC,"HORA ATUAL\n 00:00:00");
+ 
+    
+   while(TRUE)
+   {
+     
+      c = kbd_getc();//comando que faz a leitura de qual tecla foi pressionada
+    
+      if (C!=0){ //Se nossa variavel for diferente de 0 é pq algo foi pressionado
+      //printf(LCD_PUTC,"\f");
+      printf(LCD_PUTC, "\f");
+      printf(LCD_PUTC,"%c",c);
+      
+     
+      
+      
+    
+    
+    
+    
+      }
+   
+   }
+   
+   
+
+}
