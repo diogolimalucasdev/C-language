@@ -1,0 +1,79 @@
+#include <16F877A.h>
+#use delay(clock= 4mhz) 
+#include <KBD.C>
+#define LCD_DATA_PORT getenv("SFR:PORTB")//alterei a porta D para B
+#include <lcd.c>
+
+char c;
+
+char ALARME;
+
+
+void main()
+{
+   
+   kbd_init();//acionando o teclado
+   lcd_init();//iniciando o lcd
+
+   printf(LCD_PUTC,"ESCOLHA UM ALARME \n DE 0 a 3");//AS ESCOLHAS DO USUARIO
+   delay_ms(1000); //delay pra ficar mostrando um tempo na tela
+   printf(LCD_PUTC, "\f");
+   
+   printf(LCD_PUTC, " ALARME 1 \n 2 EM 2 HORAS");
+   delay_ms(1000);
+   printf(LCD_PUTC, "\f");
+   
+   printf(LCD_PUTC, " ALARME 2 \n 1 EM 1 HORA");
+   delay_ms(1000);
+   printf(LCD_PUTC, "\f");
+   
+   printf(LCD_PUTC, " ALARME 3 \n 10 EM 10 MINUTOS");
+   delay_ms(1000);
+   printf(LCD_PUTC, "\f");
+   
+   printf(LCD_PUTC,"\f EScolha: \n 1, 2 ou 3");
+   delay_ms(1000);
+   
+   while(true){
+   c = kbd_getc();//ler o que foi digitado
+   delay_ms(1);
+   if(c!= 0){ //verfica se alguma tecla foi pressionada, pois 0 signifca nulo
+   printf(LCD_PUTC,"\f" "%c", c);
+   delay_ms(1000);
+   //} else(c==0);
+        // printf(LCD_PUTC,"\f NADA FOI \n ESCrito");
+         //delay_ms(1000);
+        // printf(LCD_PUTC,"\f");
+   
+  
+   //}else if (c -48 == horario){ALARME = 2;}//tentei os dois jeitospra ver se algum ia // o primeiro compara pra ver se alarme é igual horario
+        // if (c =="3") {ALARME =3;}  //esse compara para ver seo que foi digitado é igual a 3
+   ALARME = c -48;
+   }
+  
+
+  
+  switch(ALARME){
+      case 1: 
+         printf(LCD_PUTC,"voce escolheu\n o  alarme 1");
+         delay_ms(1000);
+         printf(LCD_PUTC,"\f HORA DO ALARME");
+         break;
+      case 2:
+         printf(LCD_PUTC,"voce escolheu o  alarme 2");
+         delay_ms(10);
+         printf(LCD_PUTC,"\f HORA DO ALARME");
+         break;
+      case 3:
+         printf(LCD_PUTC,"voce escolheu o  alarme 3");
+         delay_ms(10);
+         printf(LCD_PUTC,"\f HORA DO ALARME");
+         break;
+      }
+      
+  }
+  }
+   
+ 
+   
+ 
